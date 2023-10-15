@@ -8,6 +8,11 @@
 //Square = a ** 2
 //Triangle = (baseValue * heightValue) / 2 или s = (a + b + c) / 2 => Math.sqrt( s * (s - a) * (s - b) * (s - c) )
 
+const enum EPrintArea {
+    Rectangle = 'S = a * b' ,
+    Square = 'S = a**2'
+}
+
 type calculateAreaType = ((valueA : number ) => number) 
             | ((valueA : number , valueB : number) => number) 
             | ((valueA : number , valueB : number , valueC ?: number) => number)
@@ -34,7 +39,7 @@ abstract class GeometricFigures implements IGeometricFigures {
 
 //абстрактный класс для Rectangle и Square с реализацией print() (используя ISquareRectanglePrint)
 abstract class SquareRectanglePrint extends GeometricFigures implements ISquareRectanglePrint{
-    protected abstract printArea : string ;
+    protected abstract printArea : EPrintArea ;
     
     print () : string {
         return `Formula - ${this.printArea}` ;
@@ -57,12 +62,12 @@ class Triangle extends GeometricFigures {
 }
 
 class Rectangle extends SquareRectanglePrint {
-    protected printArea = 'S = a * b' ;
+    protected printArea = EPrintArea.Rectangle ;
     
     calculateArea = (sideA : number , sideB : number) => sideA * sideB ;
 }
 class Square extends SquareRectanglePrint {
-    protected printArea = 'S = a**2' ;
+    protected printArea = EPrintArea.Square ;
 
     calculateArea = (side : number) => side**2 ;
 }

@@ -32,10 +32,10 @@ class Triangle extends GeometricFigures {
     };
 }
 class Rectangle extends SquareRectanglePrint {
-    printArea = 'S = a * b';
+    printArea = "S = a * b" /* EPrintArea.Rectangle */;
     calculateArea = (sideA, sideB) => sideA * sideB;
 }
 class Square extends SquareRectanglePrint {
-    printArea = 'S = a**2';
+    printArea = "S = a**2" /* EPrintArea.Square */;
     calculateArea = (side) => side ** 2;
 }
